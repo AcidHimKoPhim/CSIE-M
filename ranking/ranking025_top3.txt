@@ -1,0 +1,2 @@
+./imgs/l1_eq_pd_spgl/rec025/baboon.bmp	./imgs/l1_eq_pd_spgl/rec025/baboon.bmp	./imgs/samp/rec025/baboon.bmp
+./imgs/l1_eq_pd_spgl/rec025/baby_GT.bmp	./imgs/l1_eq_pd_spgl/rec025/baby_GT.bmp	./imgs/l1_eq_pd/rec025/baby_GT.bmp

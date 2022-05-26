@@ -1,0 +1,66 @@
+{
+    "mode": "sr",
+    "use_cl": true,
+    "gpu_ids": [0],
+
+    "scale": 1,
+    "is_train": true,
+    "use_chop": true,
+    "rgb_range": 255,
+    "self_ensemble": false,
+    "save_image": false,
+    "dir":"/home/chipdk/IQA_CSIE/CSIE/CSIE-3/experiments/rec05-SkipRR-highlr-6000-step6/",
+    
+    "datasets": {
+        "train": {
+            "mode": "LRHR",
+            "dataroot_HR": "/data/chipdk/Images/or/or_Y/DIV2k_orY/",
+            "dataroot_LR1": "/data/chipdk/Images/woIntra/npy_fortraining/DIV2K/rec05/Top1/",
+            "dataroot_LR2": "/data/chipdk/Images/woIntra/npy_fortraining/DIV2K/rec05/Top2/",
+            "dataroot_LR3": "/data/chipdk/Images/woIntra/npy_fortraining/DIV2K/rec05/Top3/",
+            "data_type": "npy",
+            "n_workers": 1,
+            "batch_size": 64,
+            "LR_size": 40,
+            "use_flip": true,
+            "use_rot": true,
+            "noise": "."
+        },
+        "val": {
+            "mode": "LRHR",
+            "dataroot_HR": "/data/chipdk/Images/or/or_Y/BSD500_orY/",
+            "dataroot_LR1": "/data/chipdk/Images/woIntra/npy_fortraining/BSD500/rec05/Top1/",
+            "dataroot_LR2": "/data/chipdk/Images/woIntra/npy_fortraining/BSD500/rec05/Top2/",
+            "dataroot_LR3": "/data/chipdk/Images/woIntra/npy_fortraining/BSD500/rec05/Top3/",
+            "data_type": "npy"
+        }
+    },
+
+    "networks": {
+        "which_model": "SkipRR",
+        "num_features": 32,
+        "in_channels": 1,
+        "out_channels": 1,
+        "num_steps": 6,
+        "num_groups": 3
+    },
+
+    "solver": {
+        "type": "ADAM",
+        "learning_rate": 0.0001,
+        "weight_decay": 0,
+        "lr_scheme": "MultiStepLR",
+        "lr_steps": [500, 1000, 1500, 2000],
+        "lr_gamma": 0.5,
+        "loss_type": "l1",
+        "manual_seed": 0,
+        "num_epochs": 6000,
+        "skip_threshold": 3,
+        "split_batch": 1,
+        "save_ckp_step": 50,
+        "save_vis_step": 1,
+        "pretrain": null,
+        "pretrained_path": "./experiments/SkipRR_in3f32_x4/epochs/last_ckp.pth",
+        "cl_weights": [1.0, 1.0, 1.0, 1.0,1.0,1.0]
+    }
+}

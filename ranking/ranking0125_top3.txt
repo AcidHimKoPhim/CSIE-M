@@ -1,0 +1,2 @@
+./imgs/omp/rec0125/baboon.bmp	./imgs/l1_eq_pd/rec0125/baboon.bmp	./imgs/samp/rec0125/baboon.bmp	
+./imgs/omp/rec0125/baby_GT.bmp	./imgs/l1_eq_pd/rec0125/baby_GT.bmp	./imgs/l1_eq_pd_spgl/rec0125/baby_GT.bmp	

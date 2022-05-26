@@ -1,0 +1,62 @@
+{
+    "mode": "sr",
+    "use_cl": true,
+    "gpu_ids": [0],
+
+    "scale": 1,
+    "is_train": true,
+    "use_chop": true,
+    "rgb_range": 255,
+    "self_ensemble": false,
+    "save_image": false,
+    "dir":"/home/chipdk/IQA_CSIE/CSIE/CSIE-3/experiments/rec0125-SkipRR-highLR-4000/",
+    
+    "datasets": {
+        "train": {
+            "mode": "LRHRFROMTXT",
+            "LRtxtpath": "/home/chipdk/IQA_CSIE/qualitydetector/ForCS/ranking/DIV2krec0125top3.txt",
+            "HRtxtpath": "/home/chipdk/IQA_CSIE/qualitydetector/ForCS/DIV2k_or.txt",
+            "data_type": "img",
+            "n_workers": 1,
+            "batch_size": 64,
+            "LR_size": 40,
+            "use_flip": true,
+            "use_rot": true,
+            "noise": "."
+        },
+        "val": {
+            "mode": "LR3HRFROMTXT",
+            "LRtxtpath": "/home/chipdk/IQA_CSIE/qualitydetector/ForCS/ranking/BSD500rec0125top3.txt",
+            "HRtxtpath": "/home/chipdk/IQA_CSIE/qualitydetector/ForCS/BSD500_or.txt",
+            "data_type": "img"
+        }
+    },
+
+    "networks": {
+        "which_model": "SkipRR",
+        "num_features": 32,
+        "in_channels": 1,
+        "out_channels": 1,
+        "num_steps": 4,
+        "num_groups": 3
+    },
+
+    "solver": {
+        "type": "ADAM",
+        "learning_rate": 0.0001,
+        "weight_decay": 0,
+        "lr_scheme": "MultiStepLR",
+        "lr_steps": [300, 600, 900, 1200],
+        "lr_gamma": 0.5,
+        "loss_type": "l1",
+        "manual_seed": 0,
+        "num_epochs": 4000,
+        "skip_threshold": 3,
+        "split_batch": 1,
+        "save_ckp_step": 50,
+        "save_vis_step": 1,
+        "pretrain": null,
+        "pretrained_path": "./experiments/SkipRR_in3f32_x4/epochs/last_ckp.pth",
+        "cl_weights": [1.0, 1.0, 1.0, 1.0]
+    }
+}
